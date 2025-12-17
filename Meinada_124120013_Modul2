@@ -1,0 +1,69 @@
+survey = {
+"Survey_A":[
+    {"trace_id": 1, "receiver": "R1", "offset": 100, "QC_flag": "OK"},
+    {"trace_id": 2, "receiver": "R2", "offset": 150, "QC_flag": "OK"},
+    {"trace_id": 3, "receiver": "R3", "offset": 200, "QC_flag": "BAD"}
+],
+"Survey_B": [
+    {"trace_id": 4, "receiver": "R1", "offset": 120, "QC_flag": "OK"},
+    {"trace_id": 5, "receiver": "R4", "offset": 250, "QC_flag": "OK"},
+    {"trace_id": 6, "receiver": "R2", "offset": 300, "QC_flag": "BAD"}
+]
+}
+
+# 1. Tampilkan semua trace_id yang memiliki QC_flag = BAD. [cite: 104]
+print("1. Trace ID dengan QC_flag = BAD:")
+bad_traces = []
+for nama_survey, traces in survey.items():
+    for trace in traces:
+        if trace["QC_flag"] == "BAD":
+            bad_traces.append(trace["trace_id"])
+print(f"Trace ID BAD: {bad_traces}")
+
+print("-" * 20)
+
+# 2. Hitung jumlah total trace dari seluruh survey. [cite: 105]
+total_trace = 0
+for traces in survey.values():
+    total_trace += len(traces)
+print(f"2. Jumlah total trace: {total_trace}")
+
+print("-" * 20)
+
+# 3. Cari survey yang memiliki jumlah trace paling banyak. [cite: 106]
+max_trace = 0
+survey_terbanyak = None
+
+for nama_survey, traces in survey.items():
+    jumlah_trace = len(traces)
+    if jumlah_trace > max_trace:
+        max_trace = jumlah_trace
+        survey_terbanyak = nama_survey
+    elif jumlah_trace == max_trace and survey_terbanyak is not None:
+         # Menangani jika jumlahnya sama
+         survey_terbanyak += f", {nama_survey}" 
+
+print(f"3. Survey terbanyak: {survey_terbanyak} ({max_trace} trace)")
+
+print("-" * 20)
+
+# 4. Buat set berisi semua receiver unik dari seluruh survey. [cite: 107]
+receiver_unik = set()
+for traces in survey.values():
+    for trace in traces:
+        receiver_unik.add(trace["receiver"])
+print(f"4. Receiver unik: {receiver_unik}")
+
+print("-" * 20)
+
+# 5. Buat dictionary baru berisi {"receiver": jumlah_trace} untuk menghitung frekuensi kemunculan receiver. [cite: 108, 109]
+frekuensi_receiver = {}
+for traces in survey.values():
+    for trace in traces:
+        receiver = trace["receiver"]
+        # Jika receiver sudah ada di dictionary, tambahkan 1. Jika belum, inisialisasi dengan 1.
+        frekuensi_receiver[receiver] = frekuensi_receiver.get(receiver, 0) + 1
+
+print("5. Frekuensi kemunculan receiver:")
+for r, count in frekuensi_receiver.items():
+    print(f"  {r}: {count}")
