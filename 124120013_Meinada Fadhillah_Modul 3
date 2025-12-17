@@ -1,0 +1,27 @@
+class Mahasiswa:
+    def __init__(self, nama, nim, prodi):
+        self.nama = nama
+        self.nim = nim
+        self.prodi = prodi # Tambahan atribut prodi
+
+    def tampilkan_data(self): # Method untuk mencetak seluruh atribut
+        print(f"Nama: {self.nama}")
+        print(f"NIM: {self.nim}")
+        print(f"Prodi: {self.prodi}")
+
+# Membuat objek
+m1 = Mahasiswa("Mei", "123445", "Geofisika")
+m2 = Mahasiswa("Nada", "123554", "Fisika")
+
+# Menampilkan data
+m1.tampilkan_data()
+# Output: 
+# Nama: Mei
+# NIM: 123445
+# Prodi: Geofisika
+
+m2.tampilkan_data()
+# Output:
+# Nama: Nada
+# NIM: 123554
+# Prodi: Fisika
