@@ -1,0 +1,22 @@
+# Judul Program
+# Program ini dibuat untuk menampilkan biodata singkat.
+# Dibuat oleh: Meinada
+"""
+Blok komentar multi-baris.
+Program ini hanya akan menampilkan teks ke konsol/terminal.
+"""
+
+# Menampilkan judul biodata
+print("--- BIODATA SAYA ---")
+print("") # Memberikan baris kosong sebagai spasi
+
+# Menampilkan data diri
+print("Nama      : Meinada")
+print("NIM       : 124120013")
+print("Prodi   : Teknik Geofisika")
+print("Angkatan  : 2024")
+
+# Menampilkan hobi
+print("Hobi      : Menonton Film")
+
+print("\n--- Terima Kasih ---")
